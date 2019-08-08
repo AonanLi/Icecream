@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import _ from 'lodash';
 
 import Button from '../../components/Button';
 
@@ -30,39 +31,62 @@ const colors = {
     price: [pink4, brown2, brown1]
 };
 
-const FlavourPicker = () => (
-    <View style={styles.container}>
-        <View style={styles.header}>
-            <Text style={styles.heading}>Top Flavours</Text>
-            <Button label="See more" />
-        </View>
-        <FlatList
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            data={flavours}
-            renderItem={({ item, index }) => (
-                <View key={index} style={{ ...styles.flavour, marginLeft: index ? 0 : padding }}>
-                    <View
-                        style={{ ...styles.square, backgroundColor: colors.background[index % 3] }}
-                    >
-                        <Image source={item.image} style={styles.image} />
-                        <View style={styles.names}>
-                            <Text style={styles.name}>{item.key}</Text>
-                        </View>
-                        <Text style={styles.price}>{`$ ${item.price.toFixed(2)}`}</Text>
-                        <TouchableOpacity
-                            style={{ ...styles.button, backgroundColor: colors.price[index % 3] }}
+const FlavourPicker = ({ ordered, editOrder }) => {
+    const data = flavours.map(f => ({ ...f, amount: _.get(ordered, f.key) }));
+    const total = _.sum(_.map(ordered));
+    const disabled = total === 3;
+    return (
+        <View style={styles.container}>
+            <View style={styles.header}>
+                <Text style={styles.heading}>Top Flavours</Text>
+                <Button label="See more" />
+            </View>
+            <FlatList
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={data}
+                renderItem={({ item, index }) => {
+                    const { key, image, price, amount } = item;
+                    return (
+                        <View
+                            key={index}
+                            style={{ ...styles.flavour, marginLeft: index ? 0 : padding }}
                         >
-                            <View style={styles.plus}>
-                                <Ionicons name="ios-add" size={iconSize} color={white} />
+                            <View
+                                style={{
+                                    ...styles.square,
+                                    backgroundColor: colors.background[index % 3]
+                                }}
+                            >
+                                <Image source={image} style={styles.image} />
+                                <View style={styles.names}>
+                                    <Text style={styles.name}>{key}</Text>
+                                </View>
+                                <Text style={styles.price}>{`$ ${price.toFixed(2)}`}</Text>
+                                <Text style={styles.amount}>{amount}</Text>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        if (!disabled) {
+                                            editOrder(key, true);
+                                        }
+                                    }}
+                                    style={{
+                                        ...styles.button,
+                                        backgroundColor: colors.price[index % 3]
+                                    }}
+                                >
+                                    <View style={styles.plus}>
+                                        <Ionicons name="ios-add" size={iconSize} color={white} />
+                                    </View>
+                                </TouchableOpacity>
                             </View>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            )}
-        />
-    </View>
-);
+                        </View>
+                    );
+                }}
+            />
+        </View>
+    );
+};
 
 const styles = StyleSheet.create({
     container: { height: height + offset + headerHeight + margin + 6 },
@@ -87,8 +111,8 @@ const styles = StyleSheet.create({
         height,
         borderRadius: 42,
         marginTop: offset,
-        padding: 26,
-        paddingRight: 0,
+        paddingVertical: 26,
+        paddingLeft: 12,
         backgroundColor: 'blue'
     },
     image: {

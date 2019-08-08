@@ -1,4 +1,4 @@
-// export const displayError = message => ({
-//     type: 'DISPLAY_ERROR',
-//     payload: { message }
-// });
+export const editOrder = (name, added) => ({
+    type: 'EDIT_ORDER',
+    payload: { name, added }
+});
