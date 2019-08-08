@@ -1,16 +1,16 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import { pink } from '../styles/colors';
+import { pink3 } from '../styles/colors';
 
-const Page = ({ children }) => <View style={styles.container}>{children}</View>;
+const Page = ({ children, style }) => <View style={[styles.container, style]}>{children}</View>;
 
 const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFillObject,
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: pink
+        backgroundColor: pink3
     }
 });
 

@@ -11,9 +11,10 @@ import { Ionicons } from '@expo/vector-icons';
 
 import Page from '../components/Page';
 import TextField from '../components/TextField';
+import Button from '../components/Button';
 
 import { padding } from '../styles/styleguide';
-import { heading, white, pink, button } from '../styles/colors';
+import { brown3, white, pink2 } from '../styles/colors';
 
 const size = 60;
 const height = 344;
@@ -57,12 +58,8 @@ class SignIn extends PureComponent {
                             secureTextEntry
                         />
                         <View style={styles.buttons}>
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.text}>Forgot password?</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.button}>
-                                <Text style={styles.text}>Sign up</Text>
-                            </TouchableOpacity>
+                            <Button label="Forgot password?" />
+                            <Button label="Sign up" />
                         </View>
                     </View>
                 </KeyboardAvoidingView>
@@ -101,7 +98,7 @@ const styles = StyleSheet.create({
         height: padding * 2,
         width: padding * 2,
         borderRadius: padding,
-        backgroundColor: button,
+        backgroundColor: pink2,
         position: 'absolute',
         bottom: height - padding,
         right: padding
@@ -116,7 +113,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 28,
-        color: heading,
+        color: brown3,
         height: 36
     },
     buttons: {
@@ -124,13 +121,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: 20
-    },
-    button: {
-        borderBottomWidth: 1,
-        borderColor: pink
-    },
-    text: {
-        color: pink
     }
 });
 
