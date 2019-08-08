@@ -11,3 +11,5 @@ export const brown4 = '#6B5D5A';
 export const white = '#FFFFFF';
 export const white1 = '#FAF9F4';
 export const white2 = '#FFF3E7';
+
+export const grey = '#F5F5F5';
