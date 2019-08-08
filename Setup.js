@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { AppLoading, Asset, Font } from 'expo';
+import { AppLoading, Font } from 'expo';
+import { Asset } from 'expo-asset';
 import { Image } from 'react-native';
 import Promise from 'promise';
 import _ from 'lodash';

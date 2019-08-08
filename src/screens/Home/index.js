@@ -2,11 +2,12 @@ import React, { PureComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
 import Page from '../../components/Page';
+import FlavourPicker from './FlavourPicker';
 
 import { padding } from '../../styles/styleguide';
-import { pink1, brown1, white, brown3 } from '../../styles/colors';
+import { pink1, brown3, white, brown4 } from '../../styles/colors';
 
-const height = 344;
+const height = 264;
 
 class Home extends PureComponent {
     render() {
@@ -16,6 +17,7 @@ class Home extends PureComponent {
                     <Text style={styles.title}>Hey, Polar</Text>
                     <Text style={styles.subtitle}>We have smth yummy for you</Text>
                 </View>
+                <FlavourPicker />
                 <View style={styles.panel} />
             </Page>
         );
@@ -28,16 +30,17 @@ const styles = StyleSheet.create({
     },
     top: {
         width: '100%',
-        padding
+        padding,
+        paddingBottom: 0
     },
     title: {
         fontSize: 42,
-        color: brown3
+        color: brown4
     },
     subtitle: {
         fontSize: 20,
-        color: brown1,
-        marginTop: 24
+        color: brown3,
+        marginTop: 16
     },
     panel: {
         height,

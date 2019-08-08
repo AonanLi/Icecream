@@ -14,7 +14,7 @@ import TextField from '../components/TextField';
 import Button from '../components/Button';
 
 import { padding } from '../styles/styleguide';
-import { brown3, white, pink2 } from '../styles/colors';
+import { brown4, white, pink2 } from '../styles/colors';
 
 const size = 60;
 const height = 344;
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     },
     heading: {
         fontSize: 28,
-        color: brown3,
+        color: brown4,
         height: 36
     },
     buttons: {
