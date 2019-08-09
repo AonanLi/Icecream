@@ -3,8 +3,12 @@ import { createAppContainer, createStackNavigator, createSwitchNavigator } from 
 import AuthLoading from './screens/AuthLoading';
 import SignIn from './screens/SignIn';
 import Home from './screens/Home';
+import Flavour from './screens/Flavour';
 
-const App = createStackNavigator({ Home }, { headerMode: 'none', initialRouteName: 'Home' });
+const App = createStackNavigator(
+    { Home, Flavour },
+    { headerMode: 'none', initialRouteName: 'Home' }
+);
 
 export default createAppContainer(
     createSwitchNavigator(

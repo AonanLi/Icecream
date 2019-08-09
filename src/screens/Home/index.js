@@ -18,7 +18,7 @@ const height = deviceHeight * 0.4125;
 
 class Home extends PureComponent {
     render() {
-        const { ordered, editOrder } = this.props;
+        const { ordered } = this.props;
         const sorted = _.sortBy(
             _.map(ordered, (o, key) => ({
                 key,
@@ -38,7 +38,7 @@ class Home extends PureComponent {
                     <Text style={styles.title}>Hey, Polar</Text>
                     <Text style={styles.subtitle}>We have smth yummy for you</Text>
                 </View>
-                <FlavourPicker ordered={ordered} editOrder={editOrder} />
+                <FlavourPicker {...this.props} />
                 <View style={styles.panel}>
                     <Image style={styles.image} source={images.order} />
                     <Text style={styles.panelTitle}>Your Choice</Text>

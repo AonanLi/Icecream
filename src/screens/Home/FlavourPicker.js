@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import _ from 'lodash';
 
 import Button from '../../components/Button';
 import IconButton from '../../components/IconButton';
+
+import priceamount from '../../helpers/priceamount';
 
 import flavours from '../../util/flavours';
 import { padding } from '../../styles/styleguide';
@@ -21,7 +23,7 @@ const colors = {
     price: [pink4, brown2, brown1]
 };
 
-const FlavourPicker = ({ ordered, editOrder }) => {
+const FlavourPicker = ({ ordered, editOrder, navigation }) => {
     const data = flavours.map(f => ({ ...f, amount: _.get(ordered, f.key) }));
     const total = _.sum(_.map(ordered));
     return (
@@ -35,12 +37,13 @@ const FlavourPicker = ({ ordered, editOrder }) => {
                 showsHorizontalScrollIndicator={false}
                 data={data}
                 renderItem={({ item, index }) => {
-                    const { key, image, price, amount } = item;
+                    const { key, image, amount } = item;
                     const viewColor = colors.background[index % 3];
                     const buttonColor = colors.price[index % 3];
                     return (
-                        <View
+                        <TouchableOpacity
                             key={index}
+                            onPress={() => navigation.navigate('Flavour', { item })}
                             style={{ ...styles.flavour, marginLeft: index ? 0 : padding }}
                         >
                             <View
@@ -53,9 +56,7 @@ const FlavourPicker = ({ ordered, editOrder }) => {
                                 <View style={styles.names}>
                                     <Text style={styles.name}>{key}</Text>
                                 </View>
-                                <Text style={styles.price}>{`$ ${price.toFixed(2)}${
-                                    amount ? ` x ${amount}` : ''
-                                }`}</Text>
+                                <Text style={styles.price}>{priceamount(item)}</Text>
                                 <IconButton
                                     icon="ios-add"
                                     size={iconSize}
@@ -79,7 +80,7 @@ const FlavourPicker = ({ ordered, editOrder }) => {
                                     }}
                                 />
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     );
                 }}
             />

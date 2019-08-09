@@ -1,28 +1,17 @@
 import React, { PureComponent } from 'react';
-import {
-    AsyncStorage,
-    StyleSheet,
-    KeyboardAvoidingView,
-    View,
-    Text,
-    Image,
-    TouchableOpacity
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { AsyncStorage, StyleSheet, KeyboardAvoidingView, View, Text, Image } from 'react-native';
 
 import Page from '../components/Page';
+import Panel from '../components/Panel';
 import TextField from '../components/TextField';
 import Button from '../components/Button';
 
 import images from '../util/images';
 import { deviceHeight, deviceWidth } from '../styles/styleguide';
-import { brown4, white, pink2 } from '../styles/colors';
+import { brown4, white } from '../styles/colors';
 
-const radius = 60;
 const padding = 54;
-const buttonRadius = 45;
 
-const size = 60;
 const height = deviceHeight * 0.48;
 
 class SignIn extends PureComponent {
@@ -36,20 +25,7 @@ class SignIn extends PureComponent {
                     <Text style={styles.title}>back</Text>
                 </View>
                 <KeyboardAvoidingView style={styles.keyboard} behavior="position">
-                    <View style={styles.panel}>
-                        <TouchableOpacity
-                            onPress={this.login}
-                            style={styles.circle}
-                            activeOpacity={0.8}
-                        >
-                            <View style={styles.arrow}>
-                                <Ionicons
-                                    name="ios-arrow-round-forward"
-                                    size={size}
-                                    color={white}
-                                />
-                            </View>
-                        </TouchableOpacity>
+                    <Panel style={styles.panel} onPress={this.login} icon="ios-arrow-round-forward">
                         <Text style={styles.heading}>Please Sign In</Text>
                         <View>
                             <TextField
@@ -72,7 +48,7 @@ class SignIn extends PureComponent {
                             <Button label="Forgot password?" />
                             <Button label="Sign up" />
                         </View>
-                    </View>
+                    </Panel>
                 </KeyboardAvoidingView>
             </Page>
         );
@@ -112,29 +88,7 @@ const styles = StyleSheet.create({
     },
     panel: {
         height,
-        width: '100%',
-        backgroundColor: white,
-        borderTopLeftRadius: radius,
-        borderTopRightRadius: radius,
-        padding,
-        justifyContent: 'space-between'
-    },
-    circle: {
-        height: buttonRadius * 2,
-        width: buttonRadius * 2,
-        borderRadius: buttonRadius,
-        backgroundColor: pink2,
-        position: 'absolute',
-        top: -buttonRadius,
-        right: buttonRadius
-    },
-    arrow: {
-        width: size,
-        height: size,
-        position: 'absolute',
-        alignItems: 'center',
-        left: buttonRadius - size / 2,
-        top: buttonRadius - size / 2
+        padding
     },
     heading: {
         fontSize: 26,
