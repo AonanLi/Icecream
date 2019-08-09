@@ -88,7 +88,8 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 40,
-        color: white
+        color: white,
+        fontWeight: '500'
     },
     keyboard: {
         width: '100%'
