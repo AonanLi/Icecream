@@ -1,5 +1,7 @@
 export default {
-    icecream: require('../../assets/images/icecream.png'),
+    background: require('../../assets/images/background.png'),
+    signin: require('../../assets/images/signin.png'),
+    order: require('../../assets/images/order.png'),
     Vanilla: require('../../assets/images/vanilla.png'),
     Coconut: require('../../assets/images/coconut.png'),
     Chocolate: require('../../assets/images/chocolate.png'),

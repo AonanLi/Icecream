@@ -15,7 +15,7 @@ import TextField from '../components/TextField';
 import Button from '../components/Button';
 
 import images from '../util/images';
-import { deviceHeight } from '../styles/styleguide';
+import { deviceHeight, deviceWidth } from '../styles/styleguide';
 import { brown4, white, pink2 } from '../styles/colors';
 
 const radius = 60;
@@ -29,7 +29,8 @@ class SignIn extends PureComponent {
     render() {
         return (
             <Page>
-                <Image style={styles.image} source={images.icecream} />
+                <Image style={styles.background} source={images.background} />
+                <Image style={styles.image} source={images.signin} />
                 <View style={styles.greeting}>
                     <Text style={styles.title}>Welcome</Text>
                     <Text style={styles.title}>back</Text>
@@ -84,6 +85,11 @@ class SignIn extends PureComponent {
 }
 
 const styles = StyleSheet.create({
+    background: {
+        width: deviceWidth,
+        height: deviceHeight * 0.52 + 60,
+        position: 'absolute'
+    },
     image: {
         width: 200,
         height: 494,

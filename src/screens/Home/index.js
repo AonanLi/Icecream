@@ -40,7 +40,7 @@ class Home extends PureComponent {
                 </View>
                 <FlavourPicker ordered={ordered} editOrder={editOrder} />
                 <View style={styles.panel}>
-                    <Image style={styles.image} source={images.icecream} />
+                    <Image style={styles.image} source={images.order} />
                     <Text style={styles.panelTitle}>Your Choice</Text>
                     <View style={styles.list}>
                         {sorted.map(o => (
@@ -89,8 +89,8 @@ const styles = StyleSheet.create({
         width: 170,
         height: 420,
         position: 'absolute',
-        right: 0,
-        top: -40
+        right: -20,
+        top: -60
     },
     panelTitle: {
         fontSize: 26,
