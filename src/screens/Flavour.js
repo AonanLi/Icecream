@@ -12,7 +12,7 @@ import { deviceWidth } from '../styles/styleguide';
 
 const Flavour = ({ navigation }) => {
     const { item } = navigation.state.params;
-    const { image, key, tags } = item;
+    const { image, key, tags, brief } = item;
     return (
         <Page style={styles.background}>
             <View style={styles.top}>
@@ -27,6 +27,9 @@ const Flavour = ({ navigation }) => {
                     {tags.map(id => (
                         <Tag key={id} id={id} />
                     ))}
+                </View>
+                <View>
+                    <Text style={styles.brief}>{brief}</Text>
                 </View>
             </Panel>
         </Page>
@@ -60,6 +63,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         alignItems: 'flex-start'
+    },
+    brief: {
+        fontSize: 16,
+        color: brown4
     }
 });
 
