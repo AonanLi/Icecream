@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import { TextInput, StyleSheet } from 'react-native';
 
 import { brown1, brown3, brown4 } from '../styles/colors';
-import { fieldHeight } from '../styles/styleguide';
 
 class TextField extends PureComponent {
     render() {
@@ -18,10 +17,10 @@ class TextField extends PureComponent {
 
 const styles = StyleSheet.create({
     field: {
+        fontSize: 17,
         color: brown4,
-        marginTop: 24,
         width: '100%',
-        height: fieldHeight,
+        height: 54,
         borderBottomWidth: 1,
         borderColor: brown3
     }

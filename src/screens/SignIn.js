@@ -13,11 +13,15 @@ import Page from '../components/Page';
 import TextField from '../components/TextField';
 import Button from '../components/Button';
 
-import { padding } from '../styles/styleguide';
+import { deviceHeight } from '../styles/styleguide';
 import { brown4, white, pink2 } from '../styles/colors';
 
+const radius = 60;
+const padding = 54;
+const buttonRadius = 45;
+
 const size = 60;
-const height = 344;
+const height = deviceHeight * 0.535;
 
 class SignIn extends PureComponent {
     render() {
@@ -43,20 +47,23 @@ class SignIn extends PureComponent {
                             </View>
                         </TouchableOpacity>
                         <Text style={styles.heading}>Please Sign In</Text>
-                        <TextField
-                            placeholder="Email"
-                            onChangeText={() => {}}
-                            autoComplete="username"
-                            textContentType="username"
-                            autoCapitalize="none"
-                        />
-                        <TextField
-                            placeholder="Password"
-                            onChangeText={() => {}}
-                            autoComplete="password"
-                            textContentType="password"
-                            secureTextEntry
-                        />
+                        <View>
+                            <TextField
+                                placeholder="Email"
+                                onChangeText={() => {}}
+                                autoComplete="username"
+                                textContentType="username"
+                                autoCapitalize="none"
+                            />
+                            <TextField
+                                placeholder="Password"
+                                onChangeText={() => {}}
+                                autoComplete="password"
+                                textContentType="password"
+                                secureTextEntry
+                                style={styles.password}
+                            />
+                        </View>
                         <View style={styles.buttons}>
                             <Button label="Forgot password?" />
                             <Button label="Sign up" />
@@ -77,10 +84,10 @@ const styles = StyleSheet.create({
     greeting: {
         width: '100%',
         padding,
-        paddingTop: padding * 1.5
+        paddingTop: deviceHeight * 0.11
     },
     title: {
-        fontSize: 42,
+        fontSize: 40,
         color: white
     },
     keyboard: {
@@ -90,37 +97,41 @@ const styles = StyleSheet.create({
         height,
         width: '100%',
         backgroundColor: white,
-        borderTopLeftRadius: padding,
-        borderTopRightRadius: padding,
-        padding
+        borderTopLeftRadius: radius,
+        borderTopRightRadius: radius,
+        padding,
+        justifyContent: 'space-between'
     },
     circle: {
-        height: padding * 2,
-        width: padding * 2,
-        borderRadius: padding,
+        height: buttonRadius * 2,
+        width: buttonRadius * 2,
+        borderRadius: buttonRadius,
         backgroundColor: pink2,
         position: 'absolute',
-        bottom: height - padding,
-        right: padding
+        top: -buttonRadius,
+        right: buttonRadius
     },
     arrow: {
         width: size,
         height: size,
         position: 'absolute',
         alignItems: 'center',
-        left: padding - size / 2,
-        top: padding - size / 2
+        left: buttonRadius - size / 2,
+        top: buttonRadius - size / 2
     },
     heading: {
-        fontSize: 28,
+        fontSize: 26,
         color: brown4,
         height: 36
     },
+    password: {
+        marginTop: 20,
+        marginBottom: 20
+    },
     buttons: {
-        marginTop: 48,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        height: 20
+        height: 24
     }
 });
 

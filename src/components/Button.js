@@ -18,9 +18,10 @@ const styles = StyleSheet.create({
     button: {
         borderBottomWidth: 1,
         borderColor: pink3,
-        height: 20
+        height: 24
     },
     text: {
+        fontSize: 19,
         color: pink3
     }
 });

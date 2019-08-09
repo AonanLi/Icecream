@@ -10,10 +10,10 @@ import FlavourPicker from './FlavourPicker';
 import { editOrder } from '../../actions/orders';
 
 import flavours from '../../util/flavours';
-import { padding } from '../../styles/styleguide';
+import { deviceHeight, padding } from '../../styles/styleguide';
 import { pink1, brown3, white, brown4 } from '../../styles/colors';
 
-const height = 264;
+const height = deviceHeight * 0.4125;
 
 class Home extends PureComponent {
     render() {
@@ -65,11 +65,11 @@ const styles = StyleSheet.create({
         paddingBottom: 0
     },
     title: {
-        fontSize: 42,
+        fontSize: 39,
         color: brown4
     },
     subtitle: {
-        fontSize: 20,
+        fontSize: 19,
         color: brown3,
         marginTop: 16
     },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: padding,
         borderTopRightRadius: padding,
         paddingHorizontal: padding,
-        paddingVertical: 16,
+        paddingVertical: padding,
         justifyContent: 'space-between'
     },
     panelTitle: {
@@ -91,11 +91,11 @@ const styles = StyleSheet.create({
         height: 60
     },
     order: {
-        fontSize: 20,
+        fontSize: 16,
         color: brown3
     },
     total: {
-        fontSize: 20,
+        fontSize: 16,
         color: brown4
     }
 });
