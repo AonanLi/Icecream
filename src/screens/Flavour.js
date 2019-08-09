@@ -3,6 +3,7 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 
 import Page from '../components/Page';
 import Panel from '../components/Panel';
+import Tag from '../components/Tag';
 
 import priceamount from '../helpers/priceamount';
 
@@ -11,7 +12,7 @@ import { deviceWidth } from '../styles/styleguide';
 
 const Flavour = ({ navigation }) => {
     const { item } = navigation.state.params;
-    const { image, key } = item;
+    const { image, key, tags } = item;
     return (
         <Page style={styles.background}>
             <View style={styles.top}>
@@ -21,6 +22,11 @@ const Flavour = ({ navigation }) => {
                 <View>
                     <Text style={styles.title}>{key}</Text>
                     <Text style={styles.price}>{priceamount(item)}</Text>
+                </View>
+                <View style={styles.tags}>
+                    {tags.map(id => (
+                        <Tag key={id} id={id} />
+                    ))}
                 </View>
             </Panel>
         </Page>
@@ -49,6 +55,11 @@ const styles = StyleSheet.create({
     price: {
         color: pink3,
         fontSize: 26
+    },
+    tags: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        alignItems: 'flex-start'
     }
 });
 
