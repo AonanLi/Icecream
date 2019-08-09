@@ -5,6 +5,7 @@ import {
     KeyboardAvoidingView,
     View,
     Text,
+    Image,
     TouchableOpacity
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
@@ -13,6 +14,7 @@ import Page from '../components/Page';
 import TextField from '../components/TextField';
 import Button from '../components/Button';
 
+import images from '../util/images';
 import { deviceHeight } from '../styles/styleguide';
 import { brown4, white, pink2 } from '../styles/colors';
 
@@ -21,12 +23,13 @@ const padding = 54;
 const buttonRadius = 45;
 
 const size = 60;
-const height = deviceHeight * 0.535;
+const height = deviceHeight * 0.48;
 
 class SignIn extends PureComponent {
     render() {
         return (
             <Page>
+                <Image style={styles.image} source={images.icecream} />
                 <View style={styles.greeting}>
                     <Text style={styles.title}>Welcome</Text>
                     <Text style={styles.title}>back</Text>
@@ -81,6 +84,13 @@ class SignIn extends PureComponent {
 }
 
 const styles = StyleSheet.create({
+    image: {
+        width: 200,
+        height: 494,
+        position: 'absolute',
+        right: -68,
+        bottom: height - 154
+    },
     greeting: {
         width: '100%',
         padding,
@@ -123,13 +133,14 @@ const styles = StyleSheet.create({
     heading: {
         fontSize: 26,
         color: brown4,
-        height: 36
+        height: 30,
+        marginBottom: 24
     },
     password: {
-        marginTop: 20,
-        marginBottom: 20
+        marginTop: 12
     },
     buttons: {
+        marginTop: 34,
         flexDirection: 'row',
         justifyContent: 'space-between',
         height: 24

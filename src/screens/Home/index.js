@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import _ from 'lodash';
 
 import Page from '../../components/Page';
@@ -10,6 +10,7 @@ import FlavourPicker from './FlavourPicker';
 import { editOrder } from '../../actions/orders';
 
 import flavours from '../../util/flavours';
+import images from '../../util/images';
 import { deviceHeight, padding } from '../../styles/styleguide';
 import { pink1, brown3, white, brown4 } from '../../styles/colors';
 
@@ -39,6 +40,7 @@ class Home extends PureComponent {
                 </View>
                 <FlavourPicker ordered={ordered} editOrder={editOrder} />
                 <View style={styles.panel}>
+                    <Image style={styles.image} source={images.icecream} />
                     <Text style={styles.panelTitle}>Your Choice</Text>
                     <View style={styles.list}>
                         {sorted.map(o => (
@@ -82,6 +84,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: padding,
         paddingVertical: padding,
         justifyContent: 'space-between'
+    },
+    image: {
+        width: 170,
+        height: 420,
+        position: 'absolute',
+        right: 0,
+        top: -40
     },
     panelTitle: {
         fontSize: 26,
