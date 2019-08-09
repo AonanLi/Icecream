@@ -4,14 +4,11 @@ import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import tags from '../util/tags';
 import { brown3 } from '../styles/colors';
 
-const Tag = ({ id }) => {
-    const { label, color } = tags[id];
-    return (
-        <TouchableOpacity style={{ ...styles.tag, backgroundColor: color }}>
-            <Text style={styles.text}>{label}</Text>
-        </TouchableOpacity>
-    );
-};
+const Tag = ({ tag }) => (
+    <TouchableOpacity style={{ ...styles.tag, backgroundColor: tags[tag] }}>
+        <Text style={styles.text}>{tag}</Text>
+    </TouchableOpacity>
+);
 
 const styles = StyleSheet.create({
     tag: {

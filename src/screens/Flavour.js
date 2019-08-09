@@ -24,8 +24,8 @@ const Flavour = ({ navigation }) => {
                     <Text style={styles.price}>{priceamount(item)}</Text>
                 </View>
                 <View style={styles.tags}>
-                    {tags.map(id => (
-                        <Tag key={id} id={id} />
+                    {tags.map(tag => (
+                        <Tag key={tag} tag={tag} />
                     ))}
                 </View>
                 <View>
