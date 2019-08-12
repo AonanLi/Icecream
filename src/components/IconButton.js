@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { white, grey } from '../styles/colors';
 
-const IconButton = ({ icon, size, onPress, disabled, hide, style }) =>
+const IconButton = ({ icon, size, onPress, disabled, hide, iconColor = white, style }) =>
     !hide && (
         <TouchableOpacity
             onPress={disabled ? () => {} : onPress}
@@ -26,7 +26,7 @@ const IconButton = ({ icon, size, onPress, disabled, hide, style }) =>
                     alignItems: 'center'
                 }}
             >
-                <Ionicons name={icon} size={size} color={white} />
+                <Ionicons name={icon} size={size} color={iconColor} />
             </View>
         </TouchableOpacity>
     );

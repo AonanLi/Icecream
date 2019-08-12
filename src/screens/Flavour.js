@@ -4,8 +4,9 @@ import { View, Text, Image, StyleSheet } from 'react-native';
 import Page from '../components/Page';
 import Panel from '../components/Panel';
 import Tag from '../components/Tag';
+import IconButton from '../components/IconButton';
 
-import { pink1, pink3, brown4 } from '../styles/colors';
+import { pink1, pink3, brown3, brown4 } from '../styles/colors';
 import { deviceWidth } from '../styles/styleguide';
 
 const Flavour = ({ navigation }) => {
@@ -31,6 +32,13 @@ const Flavour = ({ navigation }) => {
                     <Text style={styles.brief}>{brief}</Text>
                 </View>
             </Panel>
+            <IconButton
+                icon="ios-arrow-round-back"
+                size={40}
+                iconColor={brown3}
+                onPress={() => navigation.goBack()}
+                style={{ top: 36, left: 24 }}
+            />
         </Page>
     );
 };
