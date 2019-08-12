@@ -10,11 +10,13 @@ const iconSize = 60;
 
 const Panel = ({ children, style, icon, onPress }) => (
     <View style={[styles.panel, style]}>
-        <TouchableOpacity onPress={onPress} style={styles.circle} activeOpacity={0.8}>
-            <View style={styles.icon}>
-                <Ionicons name={icon} size={iconSize} color={white} />
-            </View>
-        </TouchableOpacity>
+        {icon && (
+            <TouchableOpacity onPress={onPress} style={styles.circle} activeOpacity={0.8}>
+                <View style={styles.icon}>
+                    <Ionicons name={icon} size={iconSize} color={white} />
+                </View>
+            </TouchableOpacity>
+        )}
         {children}
     </View>
 );

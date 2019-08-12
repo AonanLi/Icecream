@@ -5,23 +5,22 @@ import Page from '../components/Page';
 import Panel from '../components/Panel';
 import Tag from '../components/Tag';
 
-import priceamount from '../helpers/priceamount';
-
 import { pink1, pink3, brown4 } from '../styles/colors';
 import { deviceWidth } from '../styles/styleguide';
 
 const Flavour = ({ navigation }) => {
     const { item } = navigation.state.params;
-    const { image, key, tags, brief } = item;
+    const { image, key, price, tags, brief } = item;
+    const display = `$ ${price.toFixed(2)}`;
     return (
         <Page style={styles.background}>
             <View style={styles.top}>
                 <Image style={styles.image} source={image} />
             </View>
-            <Panel style={styles.panel} icon="ios-add" onPress={() => {}}>
+            <Panel style={styles.panel}>
                 <View>
                     <Text style={styles.title}>{key}</Text>
-                    <Text style={styles.price}>{priceamount(item)}</Text>
+                    <Text style={styles.price}>{display}</Text>
                 </View>
                 <View style={styles.tags}>
                     {tags.map(tag => (

@@ -5,8 +5,6 @@ import _ from 'lodash';
 import Button from '../../components/Button';
 import IconButton from '../../components/IconButton';
 
-import priceamount from '../../helpers/priceamount';
-
 import flavours from '../../util/flavours';
 import { padding } from '../../styles/styleguide';
 import { brown1, brown2, brown3, brown4, pink1, pink4, white1, white2 } from '../../styles/colors';
@@ -37,9 +35,10 @@ const FlavourPicker = ({ ordered, editOrder, navigation }) => {
                 showsHorizontalScrollIndicator={false}
                 data={data}
                 renderItem={({ item, index }) => {
-                    const { key, image, amount } = item;
+                    const { key, image, price, amount } = item;
                     const viewColor = colors.background[index % 3];
                     const buttonColor = colors.price[index % 3];
+                    const display = `$ ${price.toFixed(2)}${amount ? ` x ${amount}` : ''}`;
                     return (
                         <TouchableOpacity
                             key={index}
@@ -56,7 +55,7 @@ const FlavourPicker = ({ ordered, editOrder, navigation }) => {
                                 <View style={styles.names}>
                                     <Text style={styles.name}>{key}</Text>
                                 </View>
-                                <Text style={styles.price}>{priceamount(item)}</Text>
+                                <Text style={styles.price}>{display}</Text>
                                 <IconButton
                                     icon="ios-add"
                                     size={iconSize}
