@@ -9,6 +9,8 @@ import IconButton from '../components/IconButton';
 import { pink1, pink3, brown3, brown4 } from '../styles/colors';
 import { deviceWidth } from '../styles/styleguide';
 
+const intolerant = [{ name: 'lactose', icon: 'md-cafe' }, { name: 'gluten', icon: 'ios-flame' }];
+
 const Flavour = ({ navigation }) => {
     const { item } = navigation.state.params;
     const { image, key, price, tags, brief } = item;
@@ -30,6 +32,25 @@ const Flavour = ({ navigation }) => {
                 </View>
                 <View>
                     <Text style={styles.brief}>{brief}</Text>
+                </View>
+                <View>
+                    {intolerant.map(i => (
+                        <View key={i.name} style={styles.intolerant}>
+                            <IconButton
+                                icon={i.icon}
+                                size={24}
+                                iconColor={pink3}
+                                onPress={() => navigation.goBack()}
+                                style={{
+                                    position: 'relative',
+                                    marginRight: 12,
+                                    right: 4,
+                                    bottom: 4
+                                }}
+                            />
+                            <Text style={styles.brief}>{`For ${i.name} intolerant people`}</Text>
+                        </View>
+                    ))}
                 </View>
             </Panel>
             <IconButton
@@ -74,6 +95,10 @@ const styles = StyleSheet.create({
     brief: {
         fontSize: 16,
         color: brown4
+    },
+    intolerant: {
+        flexDirection: 'row',
+        height: 32
     }
 });
 
