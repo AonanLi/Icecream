@@ -74,7 +74,10 @@ const styles = StyleSheet.create({
         width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
-        position: 'absolute'
+        position: 'absolute',
+        shadowColor: pink3,
+        shadowRadius: 56,
+        shadowOpacity: 0.9
     },
     image: {
         width: deviceWidth * 0.56,
@@ -86,7 +89,8 @@ const styles = StyleSheet.create({
     },
     price: {
         color: pink3,
-        fontSize: 26
+        fontSize: 26,
+        marginTop: 8
     },
     tags: {
         flexDirection: 'row',
