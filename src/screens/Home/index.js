@@ -11,8 +11,8 @@ import { editOrder } from '../../actions/orders';
 
 import flavours from '../../util/flavours';
 import images from '../../util/images';
-import { deviceHeight, padding } from '../../styles/styleguide';
-import { pink1, brown3, white, brown4 } from '../../styles/colors';
+import { deviceHeight, defaultPadding } from '../../styles/styleguide';
+import { pink1, brown3, brown4 } from '../../styles/colors';
 
 const height = deviceHeight * 0.4125;
 
@@ -59,11 +59,11 @@ class Home extends PureComponent {
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: white
+        justifyContent: 'space-between'
     },
     top: {
         width: '100%',
-        padding,
+        padding: defaultPadding,
         paddingBottom: 0
     },
     title: {
@@ -79,10 +79,9 @@ const styles = StyleSheet.create({
         height,
         width: '100%',
         backgroundColor: pink1,
-        borderTopLeftRadius: padding,
-        borderTopRightRadius: padding,
-        paddingHorizontal: padding,
-        paddingVertical: padding,
+        borderTopLeftRadius: defaultPadding,
+        borderTopRightRadius: defaultPadding,
+        padding: defaultPadding,
         justifyContent: 'space-between'
     },
     image: {

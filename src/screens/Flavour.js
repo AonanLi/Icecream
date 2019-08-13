@@ -7,9 +7,10 @@ import Tag from '../components/Tag';
 import IconButton from '../components/IconButton';
 
 import { pink1, pink3, brown3, brown4 } from '../styles/colors';
-import { deviceWidth } from '../styles/styleguide';
+import { deviceWidth, deviceHeight, panelBottomPadding } from '../styles/styleguide';
 
 const intolerant = [{ name: 'lactose', icon: 'md-cafe' }, { name: 'gluten', icon: 'ios-flame' }];
+const height = deviceHeight * 0.59;
 
 const Flavour = ({ navigation }) => {
     const { item } = navigation.state.params;
@@ -20,7 +21,7 @@ const Flavour = ({ navigation }) => {
             <View style={styles.top}>
                 <Image style={styles.image} source={image} />
             </View>
-            <Panel style={styles.panel}>
+            <Panel height={height} style={{ paddingBottom: panelBottomPadding }}>
                 <View>
                     <Text style={styles.title}>{key}</Text>
                     <Text style={styles.price}>{display}</Text>
@@ -70,14 +71,14 @@ const styles = StyleSheet.create({
     },
     top: {
         height: '41%',
-        justifyContent: 'center'
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'absolute'
     },
     image: {
         width: deviceWidth * 0.56,
         height: deviceWidth * 0.504
-    },
-    panel: {
-        height: '59%'
     },
     title: {
         color: brown4,

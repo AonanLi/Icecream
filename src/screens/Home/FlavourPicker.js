@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import IconButton from '../../components/IconButton';
 
 import flavours from '../../util/flavours';
-import { padding } from '../../styles/styleguide';
+import { defaultPadding } from '../../styles/styleguide';
 import { brown1, brown2, brown3, brown4, pink1, pink4, white1, white2 } from '../../styles/colors';
 
 const size = 112;
@@ -43,7 +43,7 @@ const FlavourPicker = ({ ordered, editOrder, navigation }) => {
                         <TouchableOpacity
                             key={index}
                             onPress={() => navigation.navigate('Flavour', { item })}
-                            style={{ ...styles.flavour, marginLeft: index ? 0 : padding }}
+                            style={{ ...styles.flavour, marginLeft: index ? 0 : defaultPadding }}
                         >
                             <View
                                 style={{
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        paddingHorizontal: padding,
+        paddingHorizontal: defaultPadding,
         height: headerHeight,
         marginBottom: margin
     },

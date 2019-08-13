@@ -7,7 +7,7 @@ import TextField from '../components/TextField';
 import Button from '../components/Button';
 
 import images from '../util/images';
-import { deviceHeight, deviceWidth } from '../styles/styleguide';
+import { deviceHeight } from '../styles/styleguide';
 import { brown4, white } from '../styles/colors';
 
 const padding = 54;
@@ -24,8 +24,13 @@ class SignIn extends PureComponent {
                     <Text style={styles.title}>Welcome</Text>
                     <Text style={styles.title}>back</Text>
                 </View>
-                <KeyboardAvoidingView style={styles.keyboard} behavior="position">
-                    <Panel style={styles.panel} onPress={this.login} icon="ios-arrow-round-forward">
+                <KeyboardAvoidingView style={{ flex: 1 }} behavior="padding">
+                    <Panel
+                        icon="ios-arrow-round-forward"
+                        height={height}
+                        padding={padding}
+                        onPress={this.login}
+                    >
                         <Text style={styles.heading}>Please Sign In</Text>
                         <View>
                             <TextField
@@ -61,11 +66,7 @@ class SignIn extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-    background: {
-        width: deviceWidth,
-        height: deviceHeight * 0.52 + 60,
-        position: 'absolute'
-    },
+    background: StyleSheet.absoluteFillObject,
     image: {
         width: 200,
         height: 494,
@@ -76,19 +77,13 @@ const styles = StyleSheet.create({
     greeting: {
         width: '100%',
         padding,
-        paddingTop: deviceHeight * 0.11
+        paddingTop: deviceHeight * 0.11,
+        position: 'absolute'
     },
     title: {
         fontSize: 40,
         color: white,
         fontWeight: '500'
-    },
-    keyboard: {
-        width: '100%'
-    },
-    panel: {
-        height,
-        padding
     },
     heading: {
         fontSize: 26,
