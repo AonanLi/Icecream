@@ -11,7 +11,7 @@ import { editOrder } from '../../actions/orders';
 
 import flavours from '../../util/flavours';
 import images from '../../util/images';
-import { deviceHeight, defaultPadding } from '../../styles/styleguide';
+import { deviceHeight, defaultPadding, text } from '../../styles/styleguide';
 import { pink1, brown3, brown4 } from '../../styles/colors';
 
 const height = deviceHeight * 0.4125;
@@ -67,11 +67,13 @@ const styles = StyleSheet.create({
         paddingBottom: 0
     },
     title: {
-        fontSize: 39,
+        ...text,
+        fontSize: 36,
         color: brown4
     },
     subtitle: {
-        fontSize: 19,
+        ...text,
+        fontSize: 17.5,
         color: brown3,
         marginTop: 16
     },
@@ -92,18 +94,21 @@ const styles = StyleSheet.create({
         top: -60
     },
     panelTitle: {
-        fontSize: 26,
+        ...text,
+        fontSize: 23.5,
         color: brown4
     },
     list: {
         height: 60
     },
     order: {
-        fontSize: 16,
+        ...text,
+        fontSize: 14.5,
         color: brown3
     },
     total: {
-        fontSize: 16,
+        ...text,
+        fontSize: 14.5,
         color: brown4
     }
 });

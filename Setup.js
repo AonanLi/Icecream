@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { AppLoading, Font } from 'expo';
+import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import { Image } from 'react-native';
+import * as Font from 'expo-font';
 import Promise from 'promise';
 import _ from 'lodash';
 
@@ -29,12 +30,12 @@ class Setup extends Component {
     async _loadAssetsAsync() {
         const imageAssets = cacheImages(_.toArray(images));
         const fontAssets = cacheFonts([
-            // {
-            //     Gibson: require('../../assets/fonts/gibson-regular.ttf')
-            // },
-            // {
-            //     GibsonSemi: require('../../assets/fonts/gibson-semibold-webfont.ttf')
-            // }
+            {
+                OpenSans: require('./assets/fonts/OpenSans-Regular.ttf')
+            },
+            {
+                OpenSansSemi: require('./assets/fonts/OpenSans-SemiBold.ttf')
+            }
         ]);
         await Promise.all([...fontAssets, ...imageAssets]);
     }

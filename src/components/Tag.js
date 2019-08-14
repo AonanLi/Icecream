@@ -2,6 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
 import tags from '../util/tags';
+import { text } from '../styles/styleguide';
 import { brown3 } from '../styles/colors';
 
 const Tag = ({ tag }) => (
@@ -20,7 +21,8 @@ const styles = StyleSheet.create({
         marginBottom: 4
     },
     text: {
-        fontSize: 16,
+        ...text,
+        fontSize: 15.5,
         color: brown3
     }
 });

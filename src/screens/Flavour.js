@@ -7,7 +7,7 @@ import Tag from '../components/Tag';
 import IconButton from '../components/IconButton';
 
 import { pink1, pink3, brown3, brown4 } from '../styles/colors';
-import { deviceWidth, deviceHeight, panelBottomPadding } from '../styles/styleguide';
+import { deviceWidth, deviceHeight, panelBottomPadding, text } from '../styles/styleguide';
 
 const intolerant = [{ name: 'lactose', icon: 'md-cafe' }, { name: 'gluten', icon: 'ios-flame' }];
 const height = deviceHeight * 0.59;
@@ -84,12 +84,14 @@ const styles = StyleSheet.create({
         height: deviceWidth * 0.504
     },
     title: {
+        ...text,
         color: brown4,
-        fontSize: 31
+        fontSize: 30
     },
     price: {
+        ...text,
         color: pink3,
-        fontSize: 26,
+        fontSize: 24,
         marginTop: 8
     },
     tags: {
@@ -98,7 +100,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start'
     },
     brief: {
-        fontSize: 16,
+        ...text,
+        fontSize: 15.5,
         color: brown4
     },
     intolerant: {

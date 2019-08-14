@@ -6,7 +6,7 @@ import Button from '../../components/Button';
 import IconButton from '../../components/IconButton';
 
 import flavours from '../../util/flavours';
-import { defaultPadding } from '../../styles/styleguide';
+import { defaultPadding, text } from '../../styles/styleguide';
 import { brown1, brown2, brown3, brown4, pink1, pink4, white1, white2 } from '../../styles/colors';
 
 const size = 112;
@@ -98,8 +98,9 @@ const styles = StyleSheet.create({
         marginBottom: margin
     },
     heading: {
+        ...text,
         color: brown4,
-        fontSize: 26
+        fontSize: 24
     },
     flavour: {
         width: 150,
@@ -126,12 +127,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     name: {
-        fontSize: 18,
+        ...text,
+        fontSize: 17,
         color: brown4
     },
     price: {
+        ...text,
         marginTop: 6,
-        fontSize: 16,
+        fontSize: 14,
         color: brown3
     }
 });

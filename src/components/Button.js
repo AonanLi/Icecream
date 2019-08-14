@@ -1,6 +1,7 @@
 import React from 'react';
 import { Text, TouchableOpacity, View, StyleSheet } from 'react-native';
 
+import { text } from '../styles/styleguide';
 import { pink3 } from '../styles/colors';
 
 const Button = ({ label, onPress }) => (
@@ -18,10 +19,11 @@ const styles = StyleSheet.create({
     button: {
         borderBottomWidth: 1,
         borderColor: pink3,
-        height: 24
+        height: 26
     },
     text: {
-        fontSize: 19,
+        ...text,
+        fontSize: 18.5,
         color: pink3
     }
 });

@@ -7,7 +7,7 @@ import TextField from '../components/TextField';
 import Button from '../components/Button';
 
 import images from '../util/images';
-import { deviceHeight } from '../styles/styleguide';
+import { deviceHeight, text, bold } from '../styles/styleguide';
 import { brown4, white } from '../styles/colors';
 
 const padding = 54;
@@ -81,14 +81,15 @@ const styles = StyleSheet.create({
         position: 'absolute'
     },
     title: {
-        fontSize: 40,
-        color: white,
-        fontWeight: '500'
+        ...bold,
+        fontSize: 37.5,
+        color: white
     },
     heading: {
-        fontSize: 26,
+        ...text,
+        fontSize: 24.5,
         color: brown4,
-        height: 30,
+        height: 34,
         marginBottom: 24
     },
     password: {
