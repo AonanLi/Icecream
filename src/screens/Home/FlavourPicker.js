@@ -42,10 +42,19 @@ const FlavourPicker = props => {
     );
 };
 
+const disable = props => _.sum(_.map(props.ordered)) === 3;
+
 class FlavourItem extends Component {
+    shouldComponentUpdate(nextProps) {
+        return (
+            nextProps.item.amount !== this.props.item.amount ||
+            disable(nextProps) !== disable(this.props)
+        );
+    }
+
     render() {
-        const { item, index, ordered, navigation, editOrder } = this.props;
-        const total = _.sum(_.map(ordered));
+        const { item, index, navigation, editOrder } = this.props;
+        const disabled = disable(this.props);
         const { key, image, price, amount } = item;
         const viewColor = colors.background[index % 3];
         const buttonColor = colors.price[index % 3];
@@ -74,7 +83,7 @@ class FlavourItem extends Component {
                             editOrder(key, true);
                             Haptics.selectionAsync();
                         }}
-                        disabled={total === 3}
+                        disabled={disabled}
                         style={{
                             right: -5,
                             bottom: -5,
