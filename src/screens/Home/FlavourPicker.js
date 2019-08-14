@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import * as Haptics from 'expo-haptics';
 import _ from 'lodash';
 
 import Button from '../../components/Button';
@@ -21,9 +22,8 @@ const colors = {
     price: [pink4, brown2, brown1]
 };
 
-const FlavourPicker = ({ ordered, editOrder, navigation }) => {
-    const data = flavours.map(f => ({ ...f, amount: _.get(ordered, f.key) }));
-    const total = _.sum(_.map(ordered));
+const FlavourPicker = props => {
+    const data = flavours.map(f => ({ ...f, amount: _.get(props.ordered, f.key) }));
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -34,58 +34,72 @@ const FlavourPicker = ({ ordered, editOrder, navigation }) => {
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 data={data}
-                renderItem={({ item, index }) => {
-                    const { key, image, price, amount } = item;
-                    const viewColor = colors.background[index % 3];
-                    const buttonColor = colors.price[index % 3];
-                    const display = `$ ${price.toFixed(2)}${amount ? ` x ${amount}` : ''}`;
-                    return (
-                        <TouchableOpacity
-                            key={index}
-                            onPress={() => navigation.navigate('Flavour', { item })}
-                            style={{ ...styles.flavour, marginLeft: index ? 0 : defaultPadding }}
-                        >
-                            <View
-                                style={{
-                                    ...styles.square,
-                                    backgroundColor: viewColor
-                                }}
-                            >
-                                <Image source={image} style={styles.image} />
-                                <View style={styles.names}>
-                                    <Text style={styles.name}>{key}</Text>
-                                </View>
-                                <Text style={styles.price}>{display}</Text>
-                                <IconButton
-                                    icon="ios-add"
-                                    size={iconSize}
-                                    onPress={() => editOrder(key, true)}
-                                    disabled={total === 3}
-                                    style={{
-                                        right: -5,
-                                        bottom: -5,
-                                        backgroundColor: buttonColor
-                                    }}
-                                />
-                                <IconButton
-                                    icon="ios-remove"
-                                    size={iconSize}
-                                    onPress={() => editOrder(key)}
-                                    hide={!amount}
-                                    style={{
-                                        left: -5,
-                                        bottom: -5,
-                                        backgroundColor: buttonColor
-                                    }}
-                                />
-                            </View>
-                        </TouchableOpacity>
-                    );
-                }}
+                renderItem={({ item, index }) => (
+                    <FlavourItem key={index} index={index} item={item} {...props} />
+                )}
             />
         </View>
     );
 };
+
+class FlavourItem extends Component {
+    render() {
+        const { item, index, ordered, navigation, editOrder } = this.props;
+        const total = _.sum(_.map(ordered));
+        const { key, image, price, amount } = item;
+        const viewColor = colors.background[index % 3];
+        const buttonColor = colors.price[index % 3];
+        const display = `$ ${price.toFixed(2)}${amount ? ` x ${amount}` : ''}`;
+        return (
+            <TouchableOpacity
+                key={index}
+                onPress={() => navigation.navigate('Flavour', { item })}
+                style={{ ...styles.flavour, marginLeft: index ? 0 : defaultPadding }}
+            >
+                <View
+                    style={{
+                        ...styles.square,
+                        backgroundColor: viewColor
+                    }}
+                >
+                    <Image source={image} style={styles.image} />
+                    <View style={styles.names}>
+                        <Text style={styles.name}>{key}</Text>
+                    </View>
+                    <Text style={styles.price}>{display}</Text>
+                    <IconButton
+                        icon="ios-add"
+                        size={iconSize}
+                        onPress={() => {
+                            editOrder(key, true);
+                            Haptics.selectionAsync();
+                        }}
+                        disabled={total === 3}
+                        style={{
+                            right: -5,
+                            bottom: -5,
+                            backgroundColor: buttonColor
+                        }}
+                    />
+                    <IconButton
+                        icon="ios-remove"
+                        size={iconSize}
+                        onPress={() => {
+                            editOrder(key);
+                            Haptics.selectionAsync();
+                        }}
+                        hide={!amount}
+                        style={{
+                            left: -5,
+                            bottom: -5,
+                            backgroundColor: buttonColor
+                        }}
+                    />
+                </View>
+            </TouchableOpacity>
+        );
+    }
+}
 
 const styles = StyleSheet.create({
     container: { height: height + offset + headerHeight + margin + 6 },
